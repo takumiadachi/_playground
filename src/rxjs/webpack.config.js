@@ -4,20 +4,24 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 console.log(__dirname)
 
 module.exports = {
-  entry: "./index.tsx",
+  entry: {
+    app: "./index.tsx",
+    // vendor: ["react", "react-dom"]
+  },
 
   mode: "development",
   output: {
     path: __dirname + '/dist',
-    filename: 'index_bundle.js'
+    // filename: 'index_bundle.js'
+    // filename: 'js/[name].bundle.js'
   },
   // Enable sourcemaps for debugging webpack's output.
-  devtool: "source-map",
+  devtool: "inline-source-map",
 
   resolve: {
     // Add '.ts' and '.tsx' as resolvable extensions.
-    extensions: [".ts", ".tsx", ".js"],
-    modules: ["src", "node_modules"]
+    extensions: [".ts", ".tsx", ".js", ".json"],
+    // modules: ["src", "node_modules"]
   },
 
   module: {
@@ -40,16 +44,15 @@ module.exports = {
   // assume a corresponding global variable exists and use that instead.
   // This is important because it allows us to avoid bundling all of our
   // dependencies, which allows browsers to cache those libraries between builds.
-  externals: {
-    "react": "React",
-    "react-dom": "ReactDOM"
-  },
   devServer: {
     contentBase: path.join(__dirname, 'dist'),
     compress: true,
     port: 9000
   },
   plugins: [
-    new HtmlWebpackPlugin()
+    new HtmlWebpackPlugin({
+      filename: 'index.html',
+      template: './index.html'
+    })
   ],
 };
