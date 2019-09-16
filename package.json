@@ -2,7 +2,8 @@
   "name": "playground",
   "version": "0.0.0",
   "scripts": {
-    "start:rxjs": "cd src/rxjs && webpack-dev-server"
+    "start:rxjs": "cd src/rxjs && webpack-dev-server",
+    "start:async-await": "cd src/async-await && nodemon"
   },
   "author": "Takumi",
   "license": "ISC",
@@ -15,6 +16,7 @@
     "@types/react": "^16.9.2",
     "@types/react-dom": "^16.9.0",
     "html-webpack-plugin": "^3.2.0",
+    "nodemon": "^1.19.2",
     "source-map-loader": "^0.2.4",
     "ts-loader": "^6.1.0",
     "ts-node": "^8.3.0",
